@@ -1,0 +1,38 @@
+<!-- vi: se ft=ant : -->
+<project name="dia" default="all">
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~
+	- OPERATING SYSTEM DETECTION ~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+	<condition property="isWindows">
+		<os family="windows"/>
+	</condition>
+
+	<!--~~~~~~~~~~~~~
+	~ DIA EPS MACRO ~
+	~~~~~~~~~~~~~~-->
+
+	<macrodef name="diaeps">
+		<attribute name="input"/>
+		<attribute name="output"/>
+		<sequential>
+			<exec executable="dia" failonerror="true">
+				<arg value="-e"/>
+				<arg value="@{output}"/>
+				<arg value="-t"/>
+				<arg value="eps-builtin"/>
+				<arg value="@{input}"/>
+			</exec>
+		</sequential>
+	</macrodef>
+
+	<!--~~~~~~~~~~~~~
+	~ EMPTY TARGETS ~
+	~~~~~~~~~~~~~~-->
+
+	<target name="all"/>
+	<target name="clean"/>
+	<target name="test"/>
+
+</project>
