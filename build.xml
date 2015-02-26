@@ -9,19 +9,25 @@
 		<os family="windows"/>
 	</condition>
 
-	<!--~~~~~~~~~~~~~
-	~ DIA EPS MACRO ~
-	~~~~~~~~~~~~~~-->
+	<!--~~~~~~~~~
+	~ DIA MACRO ~
+	~~~~~~~~~~-->
 
-	<macrodef name="diaeps">
+	<macrodef name="dia">
 		<attribute name="input"/>
 		<attribute name="output"/>
+		<attribute name="type"/>
+			<!-- Possible types:
+				eps-pango
+				eps-builtin
+				png
+ 			-->
 		<sequential>
 			<exec executable="dia" failonerror="true">
 				<arg value="-e"/>
 				<arg value="@{output}"/>
 				<arg value="-t"/>
-				<arg value="eps-builtin"/>
+				<arg value="@{type}"/>
 				<arg value="@{input}"/>
 			</exec>
 		</sequential>
