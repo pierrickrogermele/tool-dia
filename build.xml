@@ -22,12 +22,19 @@
 				eps-builtin
 				png
  			-->
+		<attribute name="size" default=""/> <!-- size is only used for PNG output -->
 		<sequential>
+
+			<!-- Set argument values -->
+			<condition property="dia.size" value="--size=@{size}"><not><equals arg1="@{size}" arg2=""/></not></condition>
+
+			<!-- Run command -->
 			<exec executable="dia" failonerror="true">
 				<arg value="-e"/>
 				<arg value="@{output}"/>
 				<arg value="-t"/>
 				<arg value="@{type}"/>
+				<arg value="${dia.size}"/>
 				<arg value="@{input}"/>
 			</exec>
 		</sequential>
